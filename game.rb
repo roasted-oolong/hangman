@@ -7,4 +7,7 @@ class Game
     @min_letters = GameConfig::MIN_LETTERS
     @max_letters = GameConfig::MAX_LETTERS
   end
+
+  def play
+    puts "Hangman!! n/ I'll pick a word. n/ Try guessing it"
 end
