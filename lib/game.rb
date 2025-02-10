@@ -11,6 +11,10 @@ class Game
   def play
     puts "Hangman!! I'll pick a word. Try guessing it"
     @random_word = SelectWord.generate
+    
+    until Feedback.verify(@random_word) == true #Bug here.. Fix later
+      @random_word = SelectWord.generate
+    end
   end
 
 # def game.over?
