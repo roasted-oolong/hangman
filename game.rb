@@ -9,6 +9,6 @@ class Game
   end
 
   def play
-    puts "Hangman!! n/ I'll pick a word. n/ Try guessing it"
+    puts "Hangman!! I'll pick a word. Try guessing it"
   end
 end
