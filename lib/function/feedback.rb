@@ -3,9 +3,9 @@ require_relative 'game_config'
 module Feedback
   def self.verify(word)
     if word.length < GameConfig::MIN_LETTERS || word.length > GameConfig::MAX_LETTERS
-      false
+      return 'false'
     else
-      true
+      return 'true'
     end
   end
 end
