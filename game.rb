@@ -4,5 +4,7 @@ require_relative 'lib/select_word.rb'
 class Game
   def initialize
     @random_word = nil
+    @min_letters = GameConfig::MIN_LETTERS
+    @max_letters = GameConfig::MAX_LETTERS
   end
 end
