@@ -10,6 +10,7 @@ class Game
 
   def play
     puts "Hangman!! I'll pick a word. Try guessing it"
+    @random_word = SelectWord.generate
   end
 
   def game.over?
