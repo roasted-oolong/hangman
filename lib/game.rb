@@ -1,5 +1,5 @@
-require_relative 'lib/game_config.rb'
-require_relative 'lib/select_word.rb'
+require_relative 'function/game_config'
+require_relative 'function/select_word'
 
 class Game
   def initialize
@@ -13,7 +13,7 @@ class Game
     @random_word = SelectWord.generate
   end
 
-  def game.over?
+# def game.over?
     #placeholder
-  end
+ #end
 end
