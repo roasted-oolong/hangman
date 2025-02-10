@@ -21,7 +21,7 @@ class Game
     end
   end
 
-# def game.over?
-    #placeholder
- #end
+ def game_over?
+    @turns_left == 0
+ end
 end
