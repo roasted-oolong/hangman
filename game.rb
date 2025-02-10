@@ -11,4 +11,8 @@ class Game
   def play
     puts "Hangman!! I'll pick a word. Try guessing it"
   end
+
+  def game.over?
+    #placeholder
+  end
 end
