@@ -1,5 +1,6 @@
 require_relative 'function/game_config'
 require_relative 'function/select_word'
+require_relative 'function/feedback'
 
 class Game
   def initialize
