@@ -7,6 +7,7 @@ class Game
     @random_word = nil
     @min_letters = GameConfig::MIN_LETTERS
     @max_letters = GameConfig::MAX_LETTERS
+    @turns_left = GameConfig::TURNS
   end
 
   def play
