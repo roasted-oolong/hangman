@@ -10,4 +10,5 @@ class Game
 
   def play
     puts "Hangman!! n/ I'll pick a word. n/ Try guessing it"
+  end
 end
