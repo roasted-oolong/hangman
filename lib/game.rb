@@ -19,6 +19,18 @@ class Game
       @random_word = SelectWord.generate until Feedback.verify(@random_word) == 'true'
       puts @random_word
     end
+
+    #Save the random word into a file using serialization
+    #Use the number of letters in the random word to generate BLANKs
+
+    #~LOOP~
+    #Take the player's guess
+    #Compare the letter against the random word
+    #If the letter exists in the random word,
+    #Find where the letter exists in the random word (multiple if needed)
+    #Populate BLANKs with the letter using location of original random word
+    #Save this as the new "guess" file
+    #Minus one turns_left
   end
 
  def game_over?
