@@ -1,13 +1,41 @@
 require_relative 'function/game_config'
 require_relative 'function/select_word'
 require_relative 'function/feedback'
+require 'json'
 
 class Game
+  attr_accessor :random_word, :guesses, :turns_remaining
   def initialize
     @random_word = nil
+    @guesses = 0
+    @turns_remaining = #letter length - guesses
     @min_letters = GameConfig::MIN_LETTERS
     @max_letters = GameConfig::MAX_LETTERS
     @turns_left = GameConfig::TURNS
+  end
+
+  def save_game
+    game_state = {
+      random_word: @random_word,
+      guesses: @guesses,
+      turns_remaining: @turns_remaining
+    }
+
+    File.open('game_save.json', 'w') { |file| file.puts JSON.dump(game_state)}
+     puts "Game saved!"
+  end
+
+  def load_game
+    return unless File.exist?('game_save.json')
+
+    json_data = File.read('game_save.json')
+    game_state = JSON.parse(json_data)
+
+    @random_word = game_state['word']
+    @guesses = game_state['guesses']
+    @turns_remaining = game_state['turns_remaining']
+
+    puts "Game loaded!"
   end
 
   def play
