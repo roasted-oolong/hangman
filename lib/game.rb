@@ -13,14 +13,19 @@ class Game
   def play
     puts "Hangman!! I'll pick a word. Try guessing it"
     @random_word = SelectWord.generate
-    puts @random_word
     
     if Feedback.verify(@random_word) != 'true'
       @random_word = SelectWord.generate until Feedback.verify(@random_word) == 'true'
       puts @random_word
     end
 
-    #Save the random word into a file using serialization
+    File.open('hangman_word.txt', 'w') do |file|
+      file.puts(@random_word)
+    end
+
+    word = File.read('hangman_word.txt').chomp
+    puts word
+
     #Use the number of letters in the random word to generate BLANKs
 
     #~LOOP~
