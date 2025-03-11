@@ -14,7 +14,7 @@ class Game
 
   def save_game
     game_state = {
-    @word: @word,
+      word: @word,
       incorrect_guesses: @incorrect_guesses,
       turns_remaining: @turns_remaining
     }
