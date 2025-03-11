@@ -20,14 +20,14 @@ class Game
       turns_remaining: @turns_remaining
     }
 
-    File.open('game_save.json', 'w') { |file| file.puts JSON.dump(game_state)}
+    File.open('save_files/game_save.json', 'w') { |file| file.puts JSON.dump(game_state)}
      puts "Game saved!"
   end
 
   def load_game
-    return unless File.exist?('game_save.json')
+    return unless File.exist?('save_files/game_save.json')
 
-    json_data = File.read('game_save.json')
+    json_data = File.read('save_files/game_save.json')
     game_state = JSON.parse(json_data)
 
     @word = game_state['word']
@@ -39,20 +39,20 @@ class Game
   end
 
   def play
-    puts "Hangman!! I'll pick a word. Try guessing it"
-    @word = SelectWord.generate
-    
-    if Feedback.verify(@word) != 'true'
-      @word = SelectWord.generate until Feedback.verify(@word) == 'true'
-      puts @word
-    end
+    case File.exist?('save_files/game_save.json')
+    when true
+      load_game
+      puts "Welcome back. Let's pick up where we left off"
+    when false
+      puts "Hangman!! I'll pick a word. Try guessing it"
+      @word = SelectWord.generate
+      if Feedback.verify(@word) != 'true'
+        @word = SelectWord.generate until Feedback.verify(@word) == 'true'
+        puts @word
+      end
 
-    File.open('hangman_word.txt', 'w') do |file|
-      file.puts(@word)
+      save_game
     end
-
-    word = File.read('hangman_word.txt').chomp
-    puts word
 
     loop do
       #Display progress. Use the number of letters in the random word to generate BLANKs
