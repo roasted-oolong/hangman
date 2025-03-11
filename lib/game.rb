@@ -4,7 +4,7 @@ require_relative 'function/player_input'
 require 'json'
 
 class Game
-  attr_accessor @word, :guesses, :turns_remaining, :guessed_letters
+  attr_accessor :word, :guesses, :turns_remaining, :guessed_letters
   def initialize
     @word = nil
     @guessed_letters = []
