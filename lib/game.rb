@@ -1,4 +1,3 @@
-require_relative 'function/game_config'
 require_relative 'function/select_word'
 require_relative 'function/feedback'
 require_relative 'function/player_input'
@@ -10,8 +9,6 @@ class Game
     @random_word = nil
     @guesses = 0
     @turns_remaining = #letter length - guesses
-    @min_letters = GameConfig::MIN_LETTERS
-    @max_letters = GameConfig::MAX_LETTERS
   end
 
   def save_game
@@ -69,6 +66,6 @@ class Game
   end
 
  def game_over?
-    @turns_remaining == 0
+    @turns_remaining == 0 || 
  end
 end
