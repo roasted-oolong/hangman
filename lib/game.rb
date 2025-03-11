@@ -31,6 +31,7 @@ class Game
     game_state = JSON.parse(json_data)
 
     @word = game_state['word']
+    @guessed_letters = game_state['guessed_letters']
     @incorrect_guesses = game_state['incorrect_guesses']
     @turns_remaining = game_state['turns_remaining']
 
