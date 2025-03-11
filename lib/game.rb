@@ -12,32 +12,6 @@ class Game
     @turns_remaining = nil #letter length - incorrect_guesses
   end
 
-  def save_game
-    game_state = {
-      word: @word,
-      guessed_letters: @guessed_letters,
-      incorrect_guesses: @incorrect_guesses,
-      turns_remaining: @turns_remaining
-    }
-
-    File.open('save_files/game_save.json', 'w') { |file| file.puts JSON.dump(game_state)}
-     puts "Game saved!"
-  end
-
-  def load_game
-    return unless File.exist?('save_files/game_save.json')
-
-    json_data = File.read('save_files/game_save.json')
-    game_state = JSON.parse(json_data)
-
-    @word = game_state['word']
-    @guessed_letters = game_state['guessed_letters']
-    @incorrect_guesses = game_state['incorrect_guesses']
-    @turns_remaining = game_state['turns_remaining']
-
-    puts "Game loaded!"
-  end
-
   def play
     case File.exist?('save_files/game_save.json')
     when true
@@ -71,4 +45,30 @@ class Game
  def game_over?
     @turns_remaining == 0 
  end
+
+   def save_game
+    game_state = {
+      word: @word,
+      guessed_letters: @guessed_letters,
+      incorrect_guesses: @incorrect_guesses,
+      turns_remaining: @turns_remaining
+    }
+
+    File.open('save_files/game_save.json', 'w') { |file| file.puts JSON.dump(game_state)}
+     puts "Game saved!"
+  end
+
+  def load_game
+    return unless File.exist?('save_files/game_save.json')
+
+    json_data = File.read('save_files/game_save.json')
+    game_state = JSON.parse(json_data)
+
+    @word = game_state['word']
+    @guessed_letters = game_state['guessed_letters']
+    @incorrect_guesses = game_state['incorrect_guesses']
+    @turns_remaining = game_state['turns_remaining']
+
+    puts "Game loaded!"
+  end
 end
