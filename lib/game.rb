@@ -4,16 +4,16 @@ require_relative 'function/player_input'
 require 'json'
 
 class Game
-  attr_accessor :random_word, :guesses, :turns_remaining
+  attr_accessor @word, :guesses, :turns_remaining
   def initialize
-    @random_word = nil
+    @word = nil
     @guesses = 0
     @turns_remaining = #letter length - guesses
   end
 
   def save_game
     game_state = {
-      random_word: @random_word,
+    @word: @word,
       guesses: @guesses,
       turns_remaining: @turns_remaining
     }
@@ -28,7 +28,7 @@ class Game
     json_data = File.read('game_save.json')
     game_state = JSON.parse(json_data)
 
-    @random_word = game_state['word']
+    @word = game_state['word']
     @guesses = game_state['guesses']
     @turns_remaining = game_state['turns_remaining']
 
@@ -37,15 +37,15 @@ class Game
 
   def play
     puts "Hangman!! I'll pick a word. Try guessing it"
-    @random_word = SelectWord.generate
+    @word = SelectWord.generate
     
-    if Feedback.verify(@random_word) != 'true'
-      @random_word = SelectWord.generate until Feedback.verify(@random_word) == 'true'
-      puts @random_word
+    if Feedback.verify(@word) != 'true'
+      @word = SelectWord.generate until Feedback.verify(@word) == 'true'
+      puts @word
     end
 
     File.open('hangman_word.txt', 'w') do |file|
-      file.puts(@random_word)
+      file.puts(@word)
     end
 
     word = File.read('hangman_word.txt').chomp
