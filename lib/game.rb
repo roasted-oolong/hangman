@@ -11,7 +11,6 @@ class Game
     @turns_remaining = #letter length - guesses
     @min_letters = GameConfig::MIN_LETTERS
     @max_letters = GameConfig::MAX_LETTERS
-    @turns_left = GameConfig::TURNS
   end
 
   def save_game
