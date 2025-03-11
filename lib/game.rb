@@ -17,6 +17,7 @@ class Game
     when true
       load_game
       puts "Welcome back. Let's pick up where we left off"
+      puts @word
     when false
       puts "Hangman!! I'll pick a word. Try guessing it"
       @word = SelectWord.generate
@@ -39,11 +40,14 @@ class Game
       #Populate BLANKs with the letter using location of original random word
       #Save this as the new "guess" file
       #Minus one turns_left
+
+      if game_over? File.delete('save_files/game_save.json')
+      end
     end
   end
 
  def game_over?
-    @turns_remaining == 0 
+    @turns_remaining == 0
  end
 
    def save_game
