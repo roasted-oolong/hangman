@@ -66,6 +66,6 @@ class Game
   end
 
  def game_over?
-    @turns_left == 0
+    @turns_remaining == 0
  end
 end
