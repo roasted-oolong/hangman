@@ -30,7 +30,7 @@ class Game
       save_game
     end
 
-    loop do
+    until game_over?
       #Display progress. Use the number of letters in the random word to generate BLANKs
       puts "Guess a letter."
       letter = PlayerInput.get
@@ -50,15 +50,14 @@ class Game
       end
 
       save_game
-
-      if game_over? == true 
-        File.delete('save_files/game_save.json')
-      end
     end
+
+    File.delete('save_files/game_save.json')
+    puts "Game Over"
   end
 
  def game_over?
-    @turns_remaining == 0 || @word == @guessed_letters.join
+    @turns_remaining <= 0 || @word == @guessed_letters.join
  end
 
    def save_game
