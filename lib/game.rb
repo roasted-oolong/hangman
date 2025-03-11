@@ -42,7 +42,8 @@ class Game
       #Save this as the new "guess" file
       #Minus one turns_left
 
-      if game_over? File.delete('save_files/game_save.json')
+      if game_over? == true 
+        File.delete('save_files/game_save.json')
       end
     end
   end
