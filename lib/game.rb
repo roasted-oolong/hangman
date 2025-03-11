@@ -33,8 +33,8 @@ class Game
     loop do
       #Display progress. Use the number of letters in the random word to generate BLANKs
       puts "Guess a letter."
-      @guessed_letters << PlayerInput.get
-      puts @guessed_letters #comment out later
+      letter = PlayerInput.get
+      puts letter #comment out later
 
       #Compare the letter against the random word
       #If the letter exists in the random word,
