@@ -8,4 +8,8 @@ module Feedback
       return 'true'
     end
   end
+
+  def self.correct_guess?(letter, word)
+    word.downcase.include? letter
+  end
 end
