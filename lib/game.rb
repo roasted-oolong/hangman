@@ -34,7 +34,7 @@ class Game
       #Display progress. Use the number of letters in the random word to generate BLANKs
       puts "Guess a letter."
       @guessed_letters << PlayerInput.get
-      puts @guessed_letters
+      puts @guessed_letters #comment out later
 
       #Compare the letter against the random word
       #If the letter exists in the random word,
@@ -42,6 +42,8 @@ class Game
       #Populate BLANKs with the letter using location of original random word
       #Save this as the new "guess" file
       #Minus one turns_left
+
+      save_game
 
       if game_over? == true 
         File.delete('save_files/game_save.json')
