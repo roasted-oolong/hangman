@@ -25,6 +25,7 @@ class Game
         @word = SelectWord.generate until Feedback.verify(@word) == 'true'
         puts @word
       end
+      @turns_remaining = @word.length
 
       save_game
     end
@@ -47,7 +48,7 @@ class Game
   end
 
  def game_over?
-    @turns_remaining == 0
+    @turns_remaining == 0 || @word == @guessed_letters.join
  end
 
    def save_game
