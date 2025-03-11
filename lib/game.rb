@@ -36,15 +36,17 @@ class Game
       letter = PlayerInput.get
       puts letter #comment out later
 
-      if Feedback.correct_guess?(letter, @word) == true
+      case Feedback.correct_guess?(letter, @word)
+      when true
         puts "You got it."
         #Find where the letter exists in the random word (multiple if needed)
         #Populate BLANKs with the letter using location of original random word
         #Save this as the new "guess" file
-      else
+      when false
         puts "Nope. Try again."
         @incorrect_guesses += 1
         puts "#{@incorrect_guesses}"
+        @turns_remaining = @word.length - @incorrect_guesses
       end
 
       save_game
