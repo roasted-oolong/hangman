@@ -1,6 +1,7 @@
 require_relative 'function/game_config'
 require_relative 'function/select_word'
 require_relative 'function/feedback'
+require_relative 'function/player_input'
 require 'json'
 
 class Game
@@ -53,16 +54,18 @@ class Game
     word = File.read('hangman_word.txt').chomp
     puts word
 
-    #Use the number of letters in the random word to generate BLANKs
+    loop do
+      #Display progress. Use the number of letters in the random word to generate BLANKs
+      puts "Guess a letter."
+      guess = PlayerInput.get
 
-    #~LOOP~
-    #Take the player's guess
-    #Compare the letter against the random word
-    #If the letter exists in the random word,
-    #Find where the letter exists in the random word (multiple if needed)
-    #Populate BLANKs with the letter using location of original random word
-    #Save this as the new "guess" file
-    #Minus one turns_left
+      #Compare the letter against the random word
+      #If the letter exists in the random word,
+      #Find where the letter exists in the random word (multiple if needed)
+      #Populate BLANKs with the letter using location of original random word
+      #Save this as the new "guess" file
+      #Minus one turns_left
+    end
   end
 
  def game_over?
