@@ -9,7 +9,7 @@ class Game
     @word = nil
     @guessed_letters = []
     @incorrect_guesses = 0
-    @turns_remaining = #letter length - incorrect_guesses 
+    @turns_remaining = nil #letter length - incorrect_guesses 
   end
 
   def save_game
@@ -69,6 +69,6 @@ class Game
   end
 
  def game_over?
-    @turns_remaining == 0 || 
+    @turns_remaining == 0 
  end
 end
