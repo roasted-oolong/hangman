@@ -4,10 +4,10 @@ require_relative 'function/player_input'
 require 'json'
 
 class Game
-  attr_accessor :word, :incorrect_guesses, :turns_remaining, :guessed_letters
+  attr_accessor :word, :incorrect_guesses, :turns_remaining, :guessed_word
   def initialize
     @word = nil
-    @guessed_letters = []
+    @guessed_word = []
     @incorrect_guesses = 0
     @turns_remaining = nil #letter length - incorrect_guesses
   end
@@ -57,13 +57,13 @@ class Game
   end
 
  def game_over?
-    @turns_remaining <= 0 || @word == @guessed_letters.join
+    @turns_remaining <= 0 || @word == @guessed_word.join
  end
 
    def save_game
     game_state = {
       word: @word,
-      guessed_letters: @guessed_letters,
+      guessed_word: @guessed_word,
       incorrect_guesses: @incorrect_guesses,
       turns_remaining: @turns_remaining
     }
@@ -79,7 +79,7 @@ class Game
     game_state = JSON.parse(json_data)
 
     @word = game_state['word']
-    @guessed_letters = game_state['guessed_letters']
+    @guessed_word = game_state['guessed_word']
     @incorrect_guesses = game_state['incorrect_guesses']
     @turns_remaining = game_state['turns_remaining']
 
