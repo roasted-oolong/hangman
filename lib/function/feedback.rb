@@ -22,4 +22,10 @@ module Feedback
       guessed_word_array.join(" ")
     end
   end
+
+  def self.fill_in_guess(letter, word, guessed_word_array)
+    word.chars.each_with_index do |char, index|
+      guessed_word_array[index] = letter if char == letter
+    end
+  end
 end
