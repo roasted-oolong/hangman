@@ -17,14 +17,11 @@ class Game
     when true
       load_game
       puts "Welcome back. Let's pick up where we left off"
-      puts @word
-      puts Feedback.display_progress(@guessed_word)
     when false
       puts "Hangman!! I'll pick a word. Try guessing it"
       @word = SelectWord.generate
       if Feedback.verify(@word) != 'true'
         @word = SelectWord.generate until Feedback.verify(@word) == 'true'
-        puts @word
       end
       @turns_remaining = @word.length
 
@@ -32,14 +29,13 @@ class Game
     end
 
     until game_over?
-      puts Feedback.display_progress(@guessed_word)
+      puts "Your Progress: #{Feedback.display_progress(@guessed_word)}"
       puts "Guess a letter."
       letter = PlayerInput.get
-      puts letter #comment out later
+  
 
       case Feedback.correct_guess?(letter, @word)
       when true
-        puts "You got it."
         guessed_word_array = Feedback.fill_in_guess(letter, @word, @guessed_word)
         #Find where the letter exists in the random word (multiple if needed)
         #Populate BLANKs with the letter using location of original random word
