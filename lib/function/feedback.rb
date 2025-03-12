@@ -16,7 +16,7 @@ module Feedback
   def self.display_progress(guessed_word_array, word = "")
     case guessed_word_array.empty?
     when true
-      guessed_word_array = Array.new(word.length, "_")
+      guessed_word_array = Array.new(word.length, "—")
       return guessed_word_array
     when false
       guessed_word_array.join(" ")

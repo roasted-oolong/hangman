@@ -18,6 +18,7 @@ class Game
       load_game
       puts "Welcome back. Let's pick up where we left off"
       puts @word
+      puts Feedback.display_progress(@guessed_word)
     when false
       puts "Hangman!! I'll pick a word. Try guessing it"
       @word = SelectWord.generate
@@ -31,7 +32,7 @@ class Game
     end
 
     until game_over?
-      #Display progress. Use the number of letters in the random word to generate BLANKs
+      puts Feedback.display_progress(@guessed_word)
       puts "Guess a letter."
       letter = PlayerInput.get
       puts letter #comment out later
@@ -39,6 +40,7 @@ class Game
       case Feedback.correct_guess?(letter, @word)
       when true
         puts "You got it."
+        guessed_word_array = Feedback.fill_in_guess(letter, @word, @guessed_word)
         #Find where the letter exists in the random word (multiple if needed)
         #Populate BLANKs with the letter using location of original random word
         #Save this as the new "guess" file
@@ -54,6 +56,7 @@ class Game
 
     File.delete('save_files/game_save.json')
     puts "Game Over"
+    puts "The word was #{@word}"
   end
 
  def game_over?
