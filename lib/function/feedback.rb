@@ -13,19 +13,15 @@ module Feedback
     word.downcase.include? letter
   end
 
-  def self.display_progress(guessed_word_array, word = "")
-    case guessed_word_array.empty?
-    when true
-      guessed_word_array = Array.new(word.length, "—")
-      return guessed_word_array
-    when false
+  def self.display_progress(guessed_word_array)
       guessed_word_array.join(" ")
-    end
   end
 
   def self.fill_in_guess(letter, word, guessed_word_array)
     word.chars.each_with_index do |char, index|
       guessed_word_array[index] = letter if char == letter
     end
+    
+    guessed_word_array
   end
 end
